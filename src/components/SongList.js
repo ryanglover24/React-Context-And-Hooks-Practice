@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import uuid from 'uuid/v1';
+import NewSongForm from './NewSongForm';
 
 const SongList = () => {
     //created state inside a functional Component and destructed to be able to access it songs is array of data
@@ -9,8 +10,8 @@ const SongList = () => {
         { title: 'this wild darkness', id: 3},
     ]);
     
-    const addSong = () => {
-        setSongs([...songs, { title: 'new song', id: uuid()}])
+    const addSong = (title) => {
+        setSongs([...songs, { title, id: uuid()}])
     }
 
     return ( 
@@ -22,7 +23,7 @@ const SongList = () => {
                     )
                 })}
             </ul>
-            <button onClick={addSong}>Add A Song</button>
+            <NewSongForm addSong={addSong}/>
         </div>
      );
 }
